@@ -1,0 +1,32 @@
+body{
+  background-color: #efefef;
+    background: #efefef;
+    background: -webkit-radial-gradient(circle, #efefef, #B8B8B8);
+    background: -o-radial-gradient(circle, #efefef, #B8B8B8);
+    background: -moz-radial-gradient(circle, #efefef, #B8B8B8);
+    background: radial-gradient(circle, #efefef, #B8B8B8);
+  text-align: center;
+  padding:0;
+  margin:0;
+}
+
+.myCanvas{
+padding-top: 12px;
+padding-bottom: 12px;
+}
+
+header{
+  color:white;
+  font-family: 'Oswald', sans-serif;
+  padding-top: 30px;
+  padding-bottom: 30px;
+background-color: #3C403F;
+}
+
+Footer{
+  color:white;
+  font-family: 'Oswald', sans-serif;
+  padding-top: 30px;
+  padding-bottom: 30px;
+background-color: #3C403F;
+}
