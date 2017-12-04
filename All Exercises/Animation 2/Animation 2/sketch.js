@@ -5,20 +5,21 @@ let r;
 let g;
 let b;
 
+
 function setup(){
   createCanvas(841, 594);
   x = width/2;
   y = height/2;
-  speedX = random(100);
-  speedY = random(100);
+  speedX = (13);
+  speedY = (13);
   r = random(255);
   g = random(255);
   b = random(255);
 }
 
 function draw(){
- var BGC = background(100);
-
+    var size = random(10, 100);
+    
     
   x += speedX;
   y += speedY;
@@ -55,12 +56,12 @@ function draw(){
   b = random(255);
   }
 
-var BGC = fill(r,g,b);
+
     for (let t = 0; t < 50; t++) {
     for (let v = 0; v < 50; v++) {
 
   fill(r,g,b);
-  ellipse(x * v, y * t, 50, 50);
+  rect(x  * t, y * v, size, size);
         
     }
 }
