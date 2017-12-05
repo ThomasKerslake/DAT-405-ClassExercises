@@ -1,32 +1,42 @@
-body{
-  background-color: #efefef;
-    background: #efefef;
-    background: -webkit-radial-gradient(circle, #efefef, #B8B8B8);
-    background: -o-radial-gradient(circle, #efefef, #B8B8B8);
-    background: -moz-radial-gradient(circle, #efefef, #B8B8B8);
-    background: radial-gradient(circle, #efefef, #B8B8B8);
-  text-align: center;
-  padding:0;
-  margin:0;
+body {
+    
+background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+ background-blend-mode: screen;
+margin-top: 25px;
+font-size: 21px;
+text-align: center;
+-webkit-animation: fadein 2s; /* Safari, Chrome and Opera */
+-moz-animation: fadein 2s; /* Firefox */
+-ms-animation: fadein 2s; /* Internet Explorer */
+-o-animation: fadein 2s; /* Opera */
+animation: fadein 2s;
+text-align: center;
+padding:0;
+margin:0;
 }
 
-.myCanvas{
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.myCanvas {
 padding-top: 12px;
 padding-bottom: 12px;
 }
 
-header{
+header {
   color:white;
   font-family: 'Oswald', sans-serif;
   padding-top: 30px;
   padding-bottom: 30px;
-background-color: #3C403F;
+background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
 }
 
-Footer{
+Footer {
   color:white;
   font-family: 'Oswald', sans-serif;
-  padding-top: 30px;
+  padding-top: 23px;
   padding-bottom: 30px;
-background-color: #3C403F;
+background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
 }
