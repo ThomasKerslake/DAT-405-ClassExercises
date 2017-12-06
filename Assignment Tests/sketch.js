@@ -1,6 +1,6 @@
 //Create two variables that will store the new objects from the class Circle
 let circleArray = [];
-let arraySize = 100;
+let arraySize = 10;
 
 function setup() {
   createCanvas(594, 841);
@@ -10,7 +10,7 @@ function setup() {
 }
 
 function draw() {
-  
+
   for (let i=0; i<circleArray.length; i++){
     circleArray[i].moveFunction();
     circleArray[i].displayCircle();
@@ -43,11 +43,9 @@ class Circle{
     //Based on boundaries collision, reverse direction for x and y
     if (this.x > width || this.x<0){
       this.speedX *= -0.5;
-      this.size =-10;
     }
     if (this.y > (height) || this.y<0){
       this.speedY *= -0.5;
-      this.size = size - 10;
     }
   }
 
@@ -56,6 +54,11 @@ class Circle{
     this.fillcol = color(this.rd, this.grn, this.bl, this.a)
     fill(this.fillcol);
     stroke(this.fillcol);
+    this.x2 = map(this.x, 0, width, width, 0);
+    this.y2 = map(this.x, 0, width, width, 0);
     line(this.x, this.y, this.size, this.size);
+    line(this.x2, this.y, this.size, this.size);
+    line(this.x, this.y2, this.size, this.size);
+    line(this.x2, this.y2, this.size, this.size);
   }
 }
