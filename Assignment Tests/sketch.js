@@ -1,41 +1,61 @@
-//https://github.com/stavrosdidakis/DAT-GAD-405_2017
-//https://p5js.org
-
-//DAT405 / GAD405
-//04_Exercise01 - Loops and Random Color
-
+//Create two variables that will store the new objects from the class Circle
+let circleArray = [];
+let arraySize = 100;
 
 function setup() {
-  var canvas = createCanvas(841, 594);
-  noLoop();
-  noStroke();
-  canvas.class("myCanvas");
-  canvas.parent("myContainer");
+  createCanvas(594, 841);
+  for (let i=0; i<arraySize; i++){
+    circleArray[i] = new Circle(width/2, height/2, random(-3, 3), random(-3, 3), 500);
+  }
 }
 
-
-
 function draw() {
-    background(255, 130, 130)
-    noLoop();
-    let Elsize = random(40, 20);
+  
+  for (let i=0; i<circleArray.length; i++){
+    circleArray[i].moveFunction();
+    circleArray[i].displayCircle();
+  }
+}
 
+//Definition of the class Circle
+class Circle{
 
-for(let x=0; x < 17; x++){
-    for(let y=0; y < 17; y++){
+  constructor(x, y, speedX, speedY, size){
+    //Setup of class' variables
+    this.x = x;
+    this.y = y;
+    this.speedX = speedX;
+    this.speedY = speedY;
+    this.size = size;
 
-    noLoop();
-    stroke(255);
-    strokeWeight(10);
+    this.rd = random(255);
+    this.grn = random(255);
+    this.bl = random(255);
+    this.a = 255;
+  }
 
-    noFill();
-    rect(random(windowWidth),random(windowHeight),random(200), Elsize, Elsize, Elsize);
-    rotate(random(100));
+  //Class function that takes care of motion and collision
+  moveFunction(){
+    //Motion system - current position and speed
+    this.x = this.x + this.speedX;
+    this.y = this.y + this.speedY;
 
-
-        }
-
-
-
+    //Based on boundaries collision, reverse direction for x and y
+    if (this.x > width || this.x<0){
+      this.speedX *= -0.5;
+      this.size =-10;
     }
+    if (this.y > (height) || this.y<0){
+      this.speedY *= -0.5;
+      this.size = size - 10;
+    }
+  }
+
+  //Class function that displays the ellipse
+  displayCircle(){
+    this.fillcol = color(this.rd, this.grn, this.bl, this.a)
+    fill(this.fillcol);
+    stroke(this.fillcol);
+    line(this.x, this.y, this.size, this.size);
+  }
 }
