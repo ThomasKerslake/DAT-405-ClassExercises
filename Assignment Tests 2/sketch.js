@@ -1,24 +1,24 @@
 //Create two variables that will store the new objects from the class Circle
-let circleArray = [];
-let arraySize = 10;
+var lineArray = [];
+var arraySize = 10;
 
 function setup() {
   createCanvas(594, 841);
   for (let i=0; i<arraySize; i++){
-    circleArray[i] = new Circle(width/2, height/2, random(-3, 3), random(-3, 3), 500);
+    lineArray[i] = new Line(width/2, height/2, random(-3, 3), random(-3, 3), 320, 320);
   }
 }
 
 function draw() {
 
-  for (let i=0; i<circleArray.length; i++){
-    circleArray[i].moveFunction();
-    circleArray[i].displayCircle();
+  for (let i=0; i<lineArray.length; i++){
+    lineArray[i].moveFunction();
+    lineArray[i].displayLine();
   }
 }
 
 //Definition of the class Circle
-class Circle{
+class Line{
 
   constructor(x, y, speedX, speedY, size){
     //Setup of class' variables
@@ -50,7 +50,7 @@ class Circle{
   }
 
   //Class function that displays the ellipse
-  displayCircle(){
+  displayLine(){
     this.fillcol = color(this.rd, this.grn, this.bl, this.a)
     fill(this.fillcol);
     stroke(this.fillcol);
