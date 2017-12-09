@@ -3,6 +3,8 @@ var lineArray = [];
 //Setting the size of the array to 10
 var arraySize = 10;
 
+var clickArea;
+
 //Setting up the canvas for the creative code to be displayed on
 function setup() {
   createCanvas(594, 841);
@@ -16,6 +18,24 @@ function setup() {
 
 //Setting up the draw function
 function draw() {
+    
+if(mouseX >= 0 && mouseX <= 0+594 && mouseY >= 0 && mouseY <= 0+841){
+    clickArea = true;
+    }
+    
+else{
+    clickArea = false;
+}
+    
+if(clickArea == true){
+        if(mouseIsPressed){
+                background(255);
+        }
+    else if(keyIsPressed){
+        clear();
+    }
+}
+    
 //Sets up a loop to display equal to the number of 'units' in the string in 'lineArray'
   for (let z=0; z<lineArray.length; z++){
 //Makes the array adhere to both the functions, 'moveLineFunction' and 'drawLineFunction'
