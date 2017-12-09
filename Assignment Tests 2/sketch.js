@@ -9,7 +9,7 @@ function setup() {
 //Sets up a loop to create a new line for the size of the array (10) 
   for (let z=0; z<arraySize; z++){
 //Sets the array, 'lineArray', to be equal to (hold) the value of 'i'
-    lineArray[z] = new Line(width/2, height/2, random(-3, 3), random(-3, 3), 320, 320);
+    lineArray[z] = new Line(297, 420, random(-4, 4), random(-4, 4), 320);
   }
 }
 
@@ -24,21 +24,25 @@ function draw() {
   }
 }
 
-//Definition of the line class
+//The setup for my line class
 class Line{
 
 constructor(x, y, speedX, speedY, size){
-    //Setup of class' variables
+    //Setup of the line class' variables
+    // 'this.' is used as they refer directly to the object, also it allows them to be used within other functions (public).
     this.x = x;
     this.y = y;
     this.speedX = speedX;
     this.speedY = speedY;
-    this.size = size;
 
-    this.rd = random(255);
-    this.grn = random(255);
-    this.bl = random(255);
-    this.a = 255;
+    //Setting up the random value selection to be used in a fill() function. 
+    this.Red = random(255);
+    this.Green = random(255);
+    this.Blue = random(255);
+    
+    //Setting up the size and the value for the opacity of each line (255 = full)
+    this.Alpha = 255;
+    this.size = size;
   }
 
   //A function that takes care of movement of the lines and collision with the sides of the canvas
@@ -58,14 +62,14 @@ moveLineFunction(){
 
   //Class function that displays the lines and their reflected partner
 drawLineFunction(){
-    this.fillcol = color(this.rd, this.grn, this.bl, this.a)
+    this.fillcol = color(this.Red, this.Green, this.Blue, this.Alpha)
     fill(this.fillcol);
     stroke(this.fillcol);
     this.x2 = map(this.x, 0, width, width, 0);
     this.y2 = map(this.x, 0, width, width, 0);
     line(this.x, this.y, this.size, this.size);
+    line(this.x2, this.y2, this.size, this.size);
     line(this.x2, this.y, this.size, this.size);
     line(this.x, this.y2, this.size, this.size);
-    line(this.x2, this.y2, this.size, this.size);
   }
 }
