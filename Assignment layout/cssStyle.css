@@ -1,11 +1,11 @@
 body {
-background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 margin-top: 25px;
--webkit-animation: fadein 4s; /* Safari, Chrome and Opera */
--moz-animation: fadein 4s; /* Firefox */
--ms-animation: fadein 4s; /* Internet Explorer */
--o-animation: fadein 4s; /* Opera */
-animation: fadein 4s;
+-webkit-animation: fadein 2s; /* Safari, Chrome and Opera */
+-moz-animation: fadein 2s; /* Firefox */
+-ms-animation: fadein 2s; /* Internet Explorer */
+-o-animation: fadein 2s; /* Opera */
+animation: fadein 2s;
 padding:0;
 margin:0;
 }
@@ -16,28 +16,39 @@ margin:0;
 }
 
 .myCanvas {
-padding-top: 20px;
-padding-bottom: 8px;
-padding-right:100px;
+margin-top: 20px;
+margin-bottom: 8px;
+margin-right:100px;
 float:right;
+box-shadow: 5px 5px 15px grey;
 }
 
-.myTitle{
-  padding-right: 50%;
-  padding-top: 50%;
-  text-align: left;
+.PageTitle{
 font-family: 'Archivo Black', sans-serif;
+font-size: 200px;
+padding:0;
+margin:0;
 }
 
+.PagePara{
+  padding-left: 17px;    
+  font-family: 'Didact Gothic', sans-serif;  
+    font-size: 25px;
+}
+
+.PageList{
+   font-family: 'Didact Gothic', sans-serif;  
+    font-size: 25px; 
+}
 header {
   color:white;
   padding-top: 45px;
-background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+background-image: linear-gradient(to right, #434343 0%, black 100%);
 }
 
 Footer {
   color:white;
-  margin-top: 43%;
-  padding-bottom: 45px;
-background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  margin-top: 2%;
+  padding-bottom: 47px;
+background-image: linear-gradient(to right, #434343 0%, black 100%);
 }
