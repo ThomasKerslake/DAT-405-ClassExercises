@@ -10,12 +10,14 @@ var cleanUp = false;
 
 //Setting up the canvas for the creative code to be displayed on
 function setup() {
-  createCanvas(594, 841);
+var canvas = createCanvas(594, 841);
     background(231,255,255);
-        //Sets up a loop to create a new line for the size of the array (10) 
-        for (let z=0; z<arraySize; z++){
-            //Sets the array, 'lineArray', to be equal to (hold) the value of 'i'
-            lineArray[z] = new Line(297, 420, random(-4, 4), random(-4, 4), 320);
+    canvas.class("myCanvas");
+    canvas.parent("myContainer");
+//Sets up a loop to create a new line for the size of the array (10) 
+for (let z=0; z<arraySize; z++){
+//Sets the array, 'lineArray', to be equal to (hold) the value of 'i'
+lineArray[z] = new Line(297, 420, random(-4, 4), random(-4, 4), 320);
             }
 }
 
