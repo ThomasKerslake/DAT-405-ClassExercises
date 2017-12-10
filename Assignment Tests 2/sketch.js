@@ -5,12 +5,11 @@ var arraySize = 10;
 
 var clickArea;
 
+var cleanUp = false;
 //Setting up the canvas for the creative code to be displayed on
 function setup() {
   createCanvas(594, 841);
-    this.colourSlider;
-    colourSlider = createSlider(0, 255, 127);
-    background(colourSlider.value,255,255);
+    background(231,255,255);
 //Sets up a loop to create a new line for the size of the array (10) 
   for (let z=0; z<arraySize; z++){
 //Sets the array, 'lineArray', to be equal to (hold) the value of 'i'
@@ -27,14 +26,15 @@ if(mouseX >= 0 && mouseX <= 0+594 && mouseY >= 0 && mouseY <= 0+841){
     }
     
 else{
-    clickArea = false;
+   clickArea = false;
 }
     
 if(clickArea == true){
-    if(keyIsPressed){
-        clear();
-    }
+   if(cleanUp == true){
+       background(231,255,255);
+   }
 }
+
     
 //Sets up a loop to display equal to the number of 'units' in the string in 'lineArray'
   for (let z=0; z<lineArray.length; z++){
@@ -43,6 +43,21 @@ if(clickArea == true){
     lineArray[z].drawLineFunction();
   }
 }
+
+function keyPressed(){
+    if(keyCode === RIGHT_ARROW){
+    cleanUp = true;
+    }
+    return false;   
+}
+
+function keyReleased(){
+    if(keyCode === RIGHT_ARROW){
+    cleanUp = false;
+    }
+    return false;   
+}
+
 
 //The setup for my line class
 class Line{
@@ -70,26 +85,42 @@ moveLineFunction(){
     //Motion system - current position and speed
     this.x = this.x + this.speedX;
     this.y = this.y + this.speedY;
+    
+    if(keyIsDown(LEFT_ARROW)){
+    this.speedX = this.speedY;
+    this.speedY = this.speedX;
+    }
+    
+    else if(keyIsDown(UP_ARROW)){
+    this.speedX = this.speedX +1;
+    this.speedY = this.speedY +1;
+    }
+    
+    else if(keyIsDown(DOWN_ARROW)){
+    this.speedX =  3;
+    this.speedY =  -2;
+    }
 
     //Based on boundaries collision, reverse direction for x and y
-    if (this.x > width || this.x<0){
+    if (this.x > width || this.x < 0){
       this.speedX *= -1;
     }
-    if (this.y > (height) || this.y<0){
+    if (this.y > (height) || this.y < 0){
       this.speedY *= -1;
     }
   }
 
   //Class function that displays the lines and their reflected partner
 drawLineFunction(){
-    this.fillcol = color(this.Red, this.Green, this.Blue, this.Alpha)
+    this.fillcol = color(this.Red, this.Green, this.Blue, this.Alpha);
     fill(this.fillcol);
     stroke(this.fillcol);
     this.x2 = map(this.x, 0, width, width, 0);
-    this.y2 = map(this.x, 0, width, width, 0);
+    this.y2 = map(this.y, 0, height, height, 0);
     line(this.x, this.y, this.size, this.size);
     line(this.x2, this.y2, this.size, this.size);
     line(this.x2, this.y, this.size, this.size);
     line(this.x, this.y2, this.size, this.size);
+    
   }
 }
