@@ -8,6 +8,9 @@ var clickArea;
 //Setting up the canvas for the creative code to be displayed on
 function setup() {
   createCanvas(594, 841);
+    this.colourSlider;
+    colourSlider = createSlider(0, 255, 127);
+    background(colourSlider.value,255,255);
 //Sets up a loop to create a new line for the size of the array (10) 
   for (let z=0; z<arraySize; z++){
 //Sets the array, 'lineArray', to be equal to (hold) the value of 'i'
@@ -28,10 +31,7 @@ else{
 }
     
 if(clickArea == true){
-        if(mouseIsPressed){
-                background(255);
-        }
-    else if(keyIsPressed){
+    if(keyIsPressed){
         clear();
     }
 }
