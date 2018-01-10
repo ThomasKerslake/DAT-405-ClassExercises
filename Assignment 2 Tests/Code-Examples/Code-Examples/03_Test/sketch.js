@@ -3,10 +3,10 @@ var input, button, greeting;
 //set variables which will change the api query
 var sex = "male"; //male or female
 //var country = "Brazil"; //from 1920 to 2059
-var date = "1989"; //http://api.population.io:80/1.0/countries
-var age = "19y"
+var date = "2017"; //http://api.population.io:80/1.0/countries
+var age = "70y"
 
-let countryArray = ["United Kingdom", "Germany", "France", "Brazil", "Italy", "Spain", "Nigeria", "Finland", "Norway"];
+let countryArray = ["Uganda", "Germany", "France", "Brazil", "Italy", "Spain", "Nigeria", "Finland", "Norway"];
 let locations = [];
 
 function preload() {
@@ -27,16 +27,34 @@ function setup() {
 
 function draw(){
   //set background and text colour
+var colourInfo = [];
 for (let i=0; i<locations.length; i++){
-  fill(255);
 
-  let pos = i * 142.2; //Pos is used to set the rect/text positions
-  if(pos<1240){ //this runs for the top row
-    rect(pos,locations[i].remaining_life_expectancy, 100,400);
+  if (locations[i].remaining_life_expectancy < 20){
+    colourInfo[i] = color(247, 19, 19, 255);
+  }else if (locations[i].remaining_life_expectancy < 50){
+      colourInfo[i] = color(244, 92, 66, 255);
+  } else if (locations[i].remaining_life_expectancy < 55){
+    colourInfo[i] = color(244, 140, 65, 255);
+  } else if (locations[i].remaining_life_expectancy < 60){
+    colourInfo[i] = color(244, 184, 65, 255);
+  } else if (locations[i].remaining_life_expectancy < 65){
+    colourInfo[i] = color(244, 241, 65, 255);
+  } else if (locations[i].remaining_life_expectancy < 70){
+    colourInfo[i] = color(169, 244, 65, 255);
+  }
+
+  let pos = i * 80; //Pos is used to set the rect/text positions
+  if(pos<720){ //this runs for the top row
+    fill(colourInfo[i]);
+    rect(50,pos + 10, locations[i].remaining_life_expectancy + 300,50);
     fill(0);
-    text(locations[i].country, pos+10, height/4-30);
-    text("Temperature: " + locations[i].remaining_life_expectancy + "°C", pos+10, height/4);
-    text("Humidity: " + locations[i].age + "%", pos+10, height/4+30);
+    textSize(30)
+    text(locations[i].country,height/4-120,pos+45);
+    textSize(12)
+    text("Remaining life: " + round(locations[i].remaining_life_expectancy) + " years", height/4 + 50, pos+25);
+    text("Date: " + locations[i].date , height/4 + 50, pos+40);
+    text("Age: " + locations[i].age , height/4 + 50, pos+55);
   }
   //input = createInput();
   //input.position(40, 65);
