@@ -4,7 +4,7 @@ var input, button, greeting;
 var sex = "male"; //male or female
 //var country = "Brazil"; //from 1920 to 2059
 var date = "2017"; //http://api.population.io:80/1.0/countries
-var age = "70y"
+var age = "10y"
 
 let countryArray = ["Uganda", "Germany", "France", "Brazil", "Italy", "Spain", "Nigeria", "Finland", "Norway"];
 let locations = [];
@@ -21,7 +21,9 @@ function preload() {
 function setup() {
   createCanvas(1280,720);
   background(0);
-  noLoop();
+  frameRate(60);
+  x = 1;
+  y = height;
 }
 
 
@@ -40,14 +42,20 @@ for (let i=0; i<locations.length; i++){
     colourInfo[i] = color(244, 184, 65, 255);
   } else if (locations[i].remaining_life_expectancy < 65){
     colourInfo[i] = color(244, 241, 65, 255);
-  } else if (locations[i].remaining_life_expectancy < 70){
+  } else{
     colourInfo[i] = color(169, 244, 65, 255);
   }
 
   let pos = i * 80; //Pos is used to set the rect/text positions
   if(pos<720){ //this runs for the top row
     fill(colourInfo[i]);
-    rect(50,pos + 10, locations[i].remaining_life_expectancy + 300,50);
+    x = x + 1;
+    if(x > locations[i].remaining_life_expectancy + 400){
+      x = locations[i].remaining_life_expectancy + 400;
+      noLoop();
+    }
+    console.log(x);
+    rect(50,pos + 10, x,50);
     fill(0);
     textSize(30)
     text(locations[i].country,height/4-120,pos+45);
