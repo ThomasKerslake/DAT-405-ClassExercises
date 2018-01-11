@@ -1,27 +1,33 @@
-var input, button, greeting;
+//var input, button, greeting;
 
 //set variables which will change the api query
 var sex = "male"; //male or female
 //var country = "Brazil"; //from 1920 to 2059
 var date = "2017"; //http://api.population.io:80/1.0/countries
-var age = "10y"
+//var age = "30y"
+var input;
 
 let countryArray = ["Uganda", "Germany", "France", "Brazil", "Italy", "Spain", "Nigeria", "Finland", "Norway"];
 let locations = [];
 
 function preload() {
+  input = select('#userAge');
+  console.log(input.value());
   //For each position of the array, load a JSON object
   for (let i=0; i<countryArray.length; i++){
-    let url = "http://api.population.io:80/1.0/life-expectancy/remaining/" + sex + "/" + countryArray[i] + "/" + date + "-01-01" + "/" + age + "/";
+    let url = "http://api.population.io:80/1.0/life-expectancy/remaining/" + sex + "/" + countryArray[i] + "/" + date + "-01-01" + "/" + input.value() + "y/";
     locations[i] = loadJSON(url); //weather will not contain all cities' weather data
   }
 }
+
 
 
 function setup() {
   createCanvas(1280,720);
   background(0);
   frameRate(60);
+  var button =  select('#ageSubmitButton');
+  button.mousePressed(preload);
   x = 1;
   y = height;
 }
@@ -50,12 +56,12 @@ for (let i=0; i<locations.length; i++){
   if(pos<720){ //this runs for the top row
     fill(colourInfo[i]);
     x = x + 1;
-    if(x > locations[i].remaining_life_expectancy + 400){
-      x = locations[i].remaining_life_expectancy + 400;
+    if(x > 400){
+      x = 400;
       noLoop();
     }
     console.log(x);
-    rect(50,pos + 10, x,50);
+    rect(50,pos + 10, x + locations[i].remaining_life_expectancy,50);
     fill(0);
     textSize(30)
     text(locations[i].country,height/4-120,pos+45);
