@@ -3,7 +3,7 @@
 //set variables which will change the api query
 var sex = "male"; //male or female
 //var country = "Brazil"; //from 1920 to 2059
-var date = "2017"; //http://api.population.io:80/1.0/countries
+var date = "1987"; //http://api.population.io:80/1.0/countries
 //var age = "30y"
 var input;
 
